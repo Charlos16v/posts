@@ -56,7 +56,7 @@
                 </div>
             </div>
 
-
+            {{--
             <div class="row" style="text-align: center;margin-top: 40px;">
                 <div class="text-right m-3">
                     <select class="form-select p-3" name="language" style="width: 10%;">
@@ -73,7 +73,7 @@
                     window.location.href = `{{ route(Route::currentRouteName(), ${lang}) }}`
                 });
             </script>
-
+            --}}
 
         </div>
     </header>
