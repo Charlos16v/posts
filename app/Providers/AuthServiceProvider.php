@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Models\User;
-use App\Models\Car;
+use App\Models\Post;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -32,21 +32,21 @@ class AuthServiceProvider extends ServiceProvider
                 return true;
             }
         });
-        Gate::define('show', function (User $user, Car $car) {
-            if($user->id === $car->user_id || $user->user_role === 'admin') {
+        Gate::define('show', function (User $user, Post $post) {
+            if($user->id === $post->user_id || $user->user_role === 'admin') {
                 return true;
             }
         });
-        Gate::define('edit', function (User $user, Car $car) {
+        Gate::define('edit', function (User $user, Post $post) {
             if($user->user_role !== 'viewer') {
                 return true;
             }
         });
-        Gate::define('update', function (User $user, Car $car) {
-            return $user->id === $car->user_id;
+        Gate::define('update', function (User $user, Post $post) {
+            return $user->id === $post->user_id;
         });
-        Gate::define('delete', function (User $user, Car $car) {
-            if($user->id === $car->user_id || $user->user_role === 'admin') {
+        Gate::define('delete', function (User $user, Post $post) {
+            if($user->id === $post->user_id || $user->user_role === 'admin') {
                 return true;
             }
         });
