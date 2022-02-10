@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\CarController;
-use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::redirect('/', '/en');
+Route::redirect('/dashboard', '/en/dashboard');
+Route::redirect('/posts', '/en/posts');
 
 Route::group([
     'prefix' => '{locale}',
@@ -31,25 +32,15 @@ Route::group([
         return view('dashboard');
     })->middleware(['auth'])->name('dashboard');
 
-    /* Rutas language
-    Route::get('set_language/{lang}', function ($language) {
-        if (array_key_exists($language, config('languages'))) {
-            session()->put('applocale', $language);
-        }
-        return back();
-    })->name('set_language');
-    //Route::get('view', [LanguageController::class, 'view'])->name('view');
-    //Route::get('language-change', [LanguageController::class, 'changeLanguage'])->name('changeLanguage');*/
-
-
     // Ruta resource con breeze aplicado
-    Route::resource('cars', CarController::class)->middleware(['auth']);
+    Route::resource('posts', PostController::class)->middleware(['auth']);
 
     //Si la ruta no existe puedo indicar qué vista mostrar
     Route::fallback(function () {
-        return view('/dashboard');
+        return view('dashboard');
     });
 
 
-    require __DIR__ . '/auth.php';
 });
+
+require __DIR__ . '/auth.php';
