@@ -24,9 +24,13 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'brand'=> 'required|max:28',
-            'model' => 'required|max:30',
-            'cv' => 'required|min:2|max:3',
+            'titulo'=> 'required|min:1|max:28',
+            'extracto' => 'required|max:50',
+            'contenido' => 'required|min:20|max:256'
+            /*
+            'caducable' => 'required|min:2|max:3',
+            'comentable' => 'required|min:2|max:3',
+            'acceso' => 'required|min:2|max:3',*/
         ];
     }
 }
