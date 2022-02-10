@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::redirect('/', '/en');
+Route::redirect('/', '/en/posts');
 Route::redirect('/dashboard', '/en/dashboard');
 Route::redirect('/posts', '/en/posts');
 
